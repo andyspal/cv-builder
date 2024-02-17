@@ -5,6 +5,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { IoCallSharp } from "react-icons/io5";
 import Input from './components/Input';
 import { v4 as uuidv4 } from 'uuid';
+import EducationForm from './components/EducationForm';
 function App() {
 
   let [userData, setUserData] = useState(initialUserData);
@@ -41,14 +42,7 @@ function App() {
 
       <section className='education'>
         <h2>Education</h2>
-        <form>
-          <Input id={'school'} type={'text'} text={'School/College'} value={education.school} onChange={(e) => setEducation({ ...education, school: e.target.value })} />
-          <Input id={'degree'} type={'text'} text={'Degree'} value={education.degree} onChange={(e) => setEducation({ ...education, degree: e.target.value })} />
-          <Input id={'startDate'} type={'date'} text={'Start Date'} value={education.start} onChange={(e) => setEducation({ ...education, start: e.target.value })} />
-          <Input id={'endDate'} type={'date'} text={'End Date'} value={education.end} onChange={(e) => setEducation({ ...education, end: e.target.value })} />
-          <button type="button" onClick={handleCancel}>Cancel</button>
-          <button type="submit" onClick={handleSave}>Save</button>
-        </form>
+        <EducationForm education={education} setEducation={setEducation} educationData={educationData} setEducationData={setEducationData} initialEducation={initialEducation}/>
       </section>
       <section className='curriculum'>
         <div className='personalInfoDisplay'>
@@ -61,8 +55,8 @@ function App() {
           </div>
         </div>
       </section>
-      <section className='educationData'>
-        <h2>Education Data</h2>
+      <section className='educationDataDisplay'>
+ 
         <ul>
           {educationData.map((edu, index) => (
             <li key={index}>
