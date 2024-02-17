@@ -16,20 +16,14 @@ function App() {
   let [experienceData, setExperienceData] = useState([]);
   let [experience, setExperience] = useState(initialExperience);
 
-  const handleSave = (e) => {
-    e.preventDefault();
-    const newEducation = { ...education, id: uuidv4() }
-    setEducationData([...educationData, newEducation]);
-  }
-
-  const handleCancel = (e) => {
-    setEducation(initialEducation);
-  }
+  const handleDelete = (id) => {
+    const updatedList = educationData.filter(edu => edu.id !== id);
+    setEducationData(updatedList);
+  };
 
   return (
     <div className="App">
       <section className='personalInfo'>
-
         <h2>Personal information</h2>
         <Input id={'firstName'} type={'text'} text={'First name'} onChange={(e) => setUserData({ ...userData, firstName: e.target.value })} />
         <Input id={'lastName'} type={'text'} text={'Last name'} onChange={(e) => setUserData({ ...userData, lastName: e.target.value })} />
@@ -42,7 +36,7 @@ function App() {
 
       <section className='education'>
         <h2>Education</h2>
-        <EducationForm education={education} setEducation={setEducation} educationData={educationData} setEducationData={setEducationData} initialEducation={initialEducation}/>
+        <EducationForm education={education} setEducation={setEducation} educationData={educationData} setEducationData={setEducationData} initialEducation={initialEducation} />
       </section>
       <section className='curriculum'>
         <div className='personalInfoDisplay'>
@@ -56,14 +50,14 @@ function App() {
         </div>
       </section>
       <section className='educationDataDisplay'>
- 
         <ul>
-          {educationData.map((edu, index) => (
-            <li key={index}>
+          {educationData.map((edu) => (
+            <li key={edu.id}>
               <p>School/College: {edu.school}</p>
               <p>Degree: {edu.degree}</p>
               <p>Start Date: {edu.start}</p>
               <p>End Date: {edu.end}</p>
+              <button onClick={() => handleDelete(edu.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
