@@ -1,7 +1,8 @@
 :root {
-    --black-color: #17252a;
-    --dark-green-color: #2b7a78; 
-    --green-color: #3aafa9;
-    --light-green-color: #def2f1;
-    --white-color: #feffff;
+    --blue-color: #1A237E;
+    --gray-color: #424242; 
+    --green-color: #00796B; /* Verde azulado */
+    --yellow-color: #FFD600;
+    --white-color: #ECEFF1;
+    --purple-color: #6A1B9A; /* Púrpura oscuro */
 }
