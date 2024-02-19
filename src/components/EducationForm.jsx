@@ -19,17 +19,18 @@ const EducationForm = ({ education, setEducation, educationData, setEducationDat
   }
 
   const handleCancel = (e) => {
+    setShowForm(!showForm);
     setEducation(initialEducation);
   }
   return (
     <>
-      <button onClick={handleToggleForm}>{showForm ? 'Ocultar Formulario' : 'Mostrar Formulario'}</button>
+      <button onClick={handleToggleForm}>{!showForm ? 'Mostrar Formulario' : 'Ocultar Formulario'}</button>
       {showForm && (
       <form className='educationForm'>
         <Input id={'school'} type={'text'} text={'School/College'} value={education.school} onChange={(e) => setEducation({ ...education, school: e.target.value })} />
         <Input id={'degree'} type={'text'} text={'Degree'} value={education.degree} onChange={(e) => setEducation({ ...education, degree: e.target.value })} />
-        <Input id={'startDate'} type={'date'} text={'Start Date'} value={education.start} onChange={(e) => setEducation({ ...education, start: e.target.value })} />
-        <Input id={'endDate'} type={'date'} text={'End Date'} value={education.end} onChange={(e) => setEducation({ ...education, end: e.target.value })} />
+        <Input id={'startDateEd'} type={'date'} text={'Start Date'} value={education.start} onChange={(e) => setEducation({ ...education, start: e.target.value })} />
+        <Input id={'endDateEd'} type={'date'} text={'End Date'} value={education.end} onChange={(e) => setEducation({ ...education, end: e.target.value })} />
         <button type="button" onClick={handleCancel}>Cancel</button>
         <button type="submit" onClick={handleSave}>Save</button>
       </form>
