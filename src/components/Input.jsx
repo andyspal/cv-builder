@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({id, type ,text, pattern, onChange, value}) => {
+const Input = ({id, type ,text, pattern, onChange, value, error, max, min, onKeyDown, }) => {
   
   const labelStyle = {
     paddingBottom: '.6rem',
@@ -17,7 +17,8 @@ const Input = ({id, type ,text, pattern, onChange, value}) => {
   return (
     <>
         <label for={id} style={labelStyle}>{text}</label>
-        <input type={type} id={id} name={id} pattern={pattern} onChange={onChange} value={value} style={inputStyle} />
+        <input type={type} id={id} name={id} pattern={pattern} onChange={onChange} value={value} style={inputStyle} max={max} min={min} onKeyDown={onKeyDown}/>
+        {error && <span className="error">{error}</span>}
     </>
   )
 }

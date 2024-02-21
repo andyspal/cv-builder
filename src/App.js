@@ -17,11 +17,6 @@ function App() {
   let [experienceData, setExperienceData] = useState([]);
   let [experience, setExperience] = useState(initialExperience);
 
-  const handleDelete = (id, dataArray, setDataArray) => {
-    const updatedList = dataArray.filter(edu => edu.id !== id);
-    setDataArray(updatedList);
-  };
-
   return (
     <div className="App">
       <section className='forms'>
@@ -43,17 +38,19 @@ function App() {
       </section>
 
       <section className='curriculum'>
-        <div className='personalInfoDisplay'>
-          <h2>{userData.firstName} {userData.lastName}</h2>
-          <h3>{userData.career}</h3>
-          <div>
-            {userData.email && <div><IoMailSharp /><span>{userData.email}</span></div>}
-            {userData.phone && <div><IoCallSharp /><span>{userData.phone}</span></div>}
-            {userData.address && <div><IoLocationSharp /><span>{userData.address}</span></div>}
+        <div className='curriculum-container'>
+          <div className='personal-info-display'>
+            <h2>{userData.firstName} {userData.lastName}</h2>
+            <h3>{userData.career}</h3>
+            <div>
+              {userData.email && <div><IoMailSharp /><span>{userData.email}</span></div>}
+              {userData.phone && <div><IoCallSharp /><span>{userData.phone}</span></div>}
+              {userData.address && <div><IoLocationSharp /><span>{userData.address}</span></div>}
+            </div>
           </div>
         </div>
       </section>
-      <section className='educationDataDisplay'>
+      {/* <section className='educationDataDisplay'>
 
         <ul>
           {educationData.map((edu) => (
@@ -66,8 +63,8 @@ function App() {
             </li>
           ))}
         </ul>
-      </section>
-      <section className='experienceDataDisplay'>
+      </section> */}
+      {/* <section className='experienceDataDisplay'>
         <ul>
           {experienceData.map((exp) => (
             <li key={exp.id}>
@@ -81,8 +78,9 @@ function App() {
             </li>
           ))}
         </ul>
-      </section>
+      </section> */}
     </div>
+
   );
 }
 

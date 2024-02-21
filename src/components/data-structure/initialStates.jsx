@@ -12,8 +12,8 @@ export const initialUserData = {
 export const initialEducation = {
     school: "",
     degree: "",
-    start: "2023-01-01",
-    end: "2024-01-01",
+    start: "",
+    end: "",
 };
 
 export const initialExperience = {

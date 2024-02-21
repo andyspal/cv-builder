@@ -9,11 +9,12 @@ body {
     background-color: var(--white-color);
 
 }
-body, input {
+body, input, button {
     font-family: 'Montserrat', sans-serif;
 }
 .App {
-    padding: 2rem; 
+    display: flex;
+    padding: 2rem;  
 }
 h2 {
     font-size: 2rem;
@@ -26,20 +27,20 @@ h2, h3, label, .toggle-button{
 input {
     color: var(--gray-color);
 }
+
+.forms {
+    width: clamp(30rem, 100%, 40rem);
+}
 .personal-info {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
-    max-width: 30rem;
     h2 {
         font-size: 1.6rem;
         font-weight: 600;
     }
 }
 
-.education, .experience {
-    max-width: 30rem;
-}
 .toggle-button {
     width: 100%;
     font-size: 1.6rem;
@@ -47,7 +48,7 @@ input {
     justify-content: space-between;
     border: none;
     font-weight: 600;
-    padding: .7rem  1.4rem;
+    padding: 1rem;
 }
 
 .toggle-button, .educationForm, .experienceForm {
@@ -66,7 +67,11 @@ input {
     input {
         background-color: var(--white-color);
     }
-
+    .error {
+        color: #e00000;
+        padding-bottom: 1rem;
+        text-align: end;
+    }
     .button-container {
         display: flex;
         justify-content: space-around;
@@ -87,5 +92,22 @@ input {
             color: #fff;
         }
     }
+}
 
+.curriculum {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .curriculum-container {
+        background-color: #fff;
+        width: clamp(40rem, 100%, 50rem);
+    }
+    .personal-info-display {
+        h2{
+            background-color: var(--blue-color);
+            color: #fff;
+            padding: 1rem 0rem;
+            text-align: center;
+        }
+    }
 }
