@@ -49,6 +49,9 @@ const EducationForm = ({ education, setEducation, educationData, setEducationDat
     if (!education.start.trim()) {
       errors.start = 'Start Date is required';
     }
+    if(!education.location.trim()) {
+      errors.location = 'Location is required';
+    }
     if (!education.end.trim()) {
       errors.end = 'End Date is required';
     } else if (new Date(education.start) > new Date(education.end)) {
@@ -66,6 +69,7 @@ const EducationForm = ({ education, setEducation, educationData, setEducationDat
       <form className='educationForm'>
           <Input id={'school'} type={'text'} text={'School/College'} value={education.school} onChange={(e) => setEducation({ ...education, school: e.target.value })} error={errors.school} />
           <Input id={'degree'} type={'text'} text={'Degree'} value={education.degree} onChange={(e) => setEducation({ ...education, degree: e.target.value })} error={errors.degree} />
+          <Input id={'schoolLocation'} type={'text'} text={'Location'} value={education.location} onChange={(e) => setEducation({ ...education, location: e.target.value })} error={errors.location} />
           <Input id={'startDateEd'} type={'date'} text={'Start Date'} value={education.start} onChange={(e) => setEducation({ ...education, start: e.target.value })} error={errors.start} max={dateMaxFormatted} min={dateMinFormatted} onKeyDown={(e) => e.preventDefault()} />
           <Input id={'endDateEd'} type={'date'} text={'End Date'} value={education.end} onChange={(e) => setEducation({ ...education, end: e.target.value })} error={errors.end} max={dateMaxFormatted} min={dateMinFormatted} onKeyDown={(e) => e.preventDefault()} />
         <div className='button-container'>

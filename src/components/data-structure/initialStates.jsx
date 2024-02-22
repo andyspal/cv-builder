@@ -12,6 +12,7 @@ export const initialUserData = {
 export const initialEducation = {
     school: "",
     degree: "",
+    location: "",
     start: "",
     end: "",
 };

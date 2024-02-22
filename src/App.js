@@ -17,6 +17,13 @@ function App() {
   let [experienceData, setExperienceData] = useState([]);
   let [experience, setExperience] = useState(initialExperience);
 
+  function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long'};
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+  }
+
+
   return (
     <div className="App">
       <section className='forms'>
@@ -40,31 +47,35 @@ function App() {
       <section className='curriculum'>
         <div className='curriculum-container'>
           <div className='personal-info-display'>
-            <h2>{userData.firstName} {userData.lastName}</h2>
-            <h3>{userData.career}</h3>
-            <div>
-              {userData.email && <div><IoMailSharp /><span>{userData.email}</span></div>}
-              {userData.phone && <div><IoCallSharp /><span>{userData.phone}</span></div>}
-              {userData.address && <div><IoLocationSharp /><span>{userData.address}</span></div>}
+            {(userData.firstName || userData.lastName) && <h2>{userData.firstName} {userData.lastName}</h2>}
+            {userData.career && <h3>{userData.career}</h3>}
+            <div className='contact-display'>
+              {userData.email && <span><IoMailSharp className='icon' />{userData.email}</span>}
+              {userData.phone && <span><IoCallSharp className='icon' />{userData.phone}</span>}
+              {userData.address && <span><IoLocationSharp className='icon' />{userData.address}</span>}
             </div>
           </div>
+          <div className='education-display'>
+            {(educationData.length !== 0) && <h3 className='curriculum-title'>Education</h3>}
+            <ul>
+              {educationData.map((edu) => (
+                <li key={edu.id} className="education-entry">
+                  <div className="education-details">
+                    <h3>{edu.degree}</h3>
+                    <p className="institution">{edu.school}</p>
+                    <p className="location">{edu.location}</p>
+                    <p className="dates">
+                      {formatDate(edu.start)} - {formatDate(edu.end)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </section>
-      {/* <section className='educationDataDisplay'>
 
-        <ul>
-          {educationData.map((edu) => (
-            <li key={edu.id}>
-              <p>School/College: {edu.school}</p>
-              <p>Degree: {edu.degree}</p>
-              <p>Start Date: {edu.start}</p>
-              <p>End Date: {edu.end}</p>
-              <button onClick={() => handleDelete(edu.id, educationData, setEducationData)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      </section> */}
-      {/* <section className='experienceDataDisplay'>
+
+        {/* <section className='experienceDataDisplay'>
         <ul>
           {experienceData.map((exp) => (
             <li key={exp.id}>
@@ -79,6 +90,7 @@ function App() {
           ))}
         </ul>
       </section> */}
+      </section>
     </div>
 
   );
