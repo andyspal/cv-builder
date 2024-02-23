@@ -7,7 +7,6 @@ function Curriculum({ userData, educationData, experienceData }) {
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
     }
-
     return (
         <section className='curriculum'>
             <div className='curriculum-container'>
